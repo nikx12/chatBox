@@ -38,5 +38,9 @@ io.on('connection', (socket) => {
         io.sockets.emit('new_message', {message : data.message, username : socket.username});
     })
 
+    //listen on typing
+    socket.on('typing', (data) => {
+    	socket.broadcast.emit('typing', {username : socket.username})
+    })
 });
     
