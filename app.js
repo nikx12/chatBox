@@ -9,10 +9,18 @@ app.use(express.static('public'));
 
 //routes
 app.get('/', (req, res)=>{
-    res.send("hello there!!");
+    res.render("index");
 })
 
 //
-app.listen(3000, function() {
-    console.log("Server started!!");
+server = app.listen(3001);
+
+//socket.io instantiation
+const io = require("socket.io")(server)
+
+
+//listen on every connection
+io.on('connection', (socket) => {
+    console.log('New user connected')
 });
+    
