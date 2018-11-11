@@ -15,4 +15,12 @@ $(function(){
         socket.emit('new_message', {message : message.val()})
         console.log("send message clicked", message.val())
     })
+
+
+	//Emit a username
+	send_username.click(function(){
+        socket.emit('change_username', {username : username.val()})
+        console.log("send username clicked", username.val())
+        
+	})
 })
