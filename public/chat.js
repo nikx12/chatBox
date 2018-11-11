@@ -29,5 +29,15 @@ $(function(){
 		feedback.html('');
 		message.val('');
 		chatroom.append("<p class='message'>" + data.username + ": " + data.message + "</p>")
+    })
+    
+    //Emit typing
+	message.bind("keypress", () => {
+		socket.emit('typing')
+	})
+
+	//Listen on typing
+	socket.on('typing', (data) => {
+		feedback.html("<p><i>" + data.username + " is typing a message..." + "</i></p>")
 	})
 })
