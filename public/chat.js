@@ -22,5 +22,12 @@ $(function(){
         socket.emit('change_username', {username : username.val()})
         console.log("send username clicked", username.val())
         
+    })
+    
+    //Listen on new_message
+	socket.on("new_message", (data) => {
+		feedback.html('');
+		message.val('');
+		chatroom.append("<p class='message'>" + data.username + ": " + data.message + "</p>")
 	})
 })
